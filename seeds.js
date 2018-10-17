@@ -19,14 +19,14 @@ var Comment     =  require("./models/comment");
 
    function seedDB(){
        //Remove All Campgrounds
-    Campground.remove({},function(err,result){
+    Campground.remove({},(err,result)=>{
         if(err){
             console.log(err);
         }
         else{
 
         console.log(result);
-        Comment.remove({},function(error,removed){
+        Comment.remove({},(error,removed)=>{
                 if(error){
                     console.log(error)
                 }
@@ -38,15 +38,15 @@ var Comment     =  require("./models/comment");
     });
 }
        //Add new campgrounds
-    // data.forEach(function(seed){
-    //     Campground.create(seed, function(err,campground){
+    // data.forEach((seed)=>{
+    //     Campground.create(seed, (err,campground)=>{
     //         if(err){
     //             console.log(err)
     //         }
     //         else{
     //             console.log(campground);
                 
-    //             Comment.create({text: "this place is great but i wish there was internet", author: "Hommer"}, function(err,commentCreated){
+    //             Comment.create({text: "this place is great but i wish there was internet", author: "Hommer"}, (err,commentCreated)=>{
     //                 if(err){
     //                     console.log(err)
     //                  }

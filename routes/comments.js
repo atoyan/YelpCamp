@@ -5,8 +5,8 @@ var comment     = require("../models/comment");
 var middleware = require("../middleware");
 
 
-router.get("/new", middleware.isLoggedIn, function(req,res){
-    campground.findById(req.params.id,function(err,campground){
+router.get("/new", middleware.isLoggedIn, (req,res)=>{
+    campground.findById(req.params.id,(err,campground)=>{
         if(err){
             console.log(err)
         }
@@ -20,16 +20,16 @@ router.get("/new", middleware.isLoggedIn, function(req,res){
 
 
 //Comments Create
-router.post("/", middleware.isLoggedIn, function(req,res){
+router.post("/", middleware.isLoggedIn, (req,res)=>{
     //lookup campground using id
     //create new comments and connect to campground and redirect after to showpage
     
-    campground.findById(req.params.id, function(err,foundCampground){
+    campground.findById(req.params.id, (err,foundCampground)=>{
             if(err){
                 console.log(err)
             }
             else{
-                comment.create(req.body.comment, function(err, createdComment){
+                comment.create(req.body.comment, (err, createdComment)=>{
                     if(err)
                     {   req.flash("error", "Something went wrong ")
                         console.log(err)}
@@ -52,8 +52,8 @@ router.post("/", middleware.isLoggedIn, function(req,res){
 })
 
 //COMMENT EDIT
-router.get("/:comment_id/edit", middleware.checkCommentOwnership,  function(req,res){
-    comment.findById(req.params.comment_id, function(err,foundComment){
+router.get("/:comment_id/edit", middleware.checkCommentOwnership,  (req,res)=>{
+    comment.findById(req.params.comment_id, (err,foundComment)=>{
         if(err){
             req.flash("error", "Something went wrong")
             console.log(err)
@@ -67,13 +67,13 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership,  function(req,
    
 })
 
-router.put("/:comment_id", middleware.checkCommentOwnership, function(req,res){
+router.put("/:comment_id", middleware.checkCommentOwnership, (req,res)=>{
     var date = new Date().toLocaleString({
         timeZone: 'Europe/Athens'
     });
     var data = {text: req.body.comment.text, updatedAt: date };
     console.log(date);
-    comment.findByIdAndUpdate(req.params.comment_id, data,  function(err,updatedComment){
+    comment.findByIdAndUpdate(req.params.comment_id, data,  (err,updatedComment)=>{
         if(err){
             req.flash("error", "Something went wrong")
             console.log(err)
@@ -93,8 +93,8 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req,res){
 
 //COMMENT DESTROY
 
-router.delete("/:comment_id", middleware.checkCommentOwnership , function(req,res){
-    comment.findByIdAndRemove(req.params.comment_id,function(err){
+router.delete("/:comment_id", middleware.checkCommentOwnership , (req,res)=>{
+    comment.findByIdAndRemove(req.params.comment_id,(err)=>{
         if(err){
             console.log(err)
             res.redirect("back")

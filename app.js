@@ -47,7 +47,7 @@ passport.use(new LocalStrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
 
-app.use(function(req,res,next){
+app.use((req,res,next)=>{
     res.locals.currentUser = req.user;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
@@ -66,7 +66,7 @@ app.use("/campgrounds",campgroundRoutes);
 
 
 
-app.listen(3000,function(req,res){
+app.listen(3000,()=>{
     
     console.log("The YelpCamp Server Is Running");
 });

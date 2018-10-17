@@ -4,7 +4,7 @@ var user    = require("../models/user");
 var passport = require("passport");
 
 
-router.get("/",function(req,res){
+router.get("/",(req,res)=>{
     
     res.render("landing");
 });
@@ -13,20 +13,20 @@ router.get("/",function(req,res){
 
 //AUTH ROUTES 
 
-router.get("/register", function(req,res){
+router.get("/register", (req,res)=>{
 
     res.render("register");
 });
 
-router.post("/register", function(req,res){
+router.post("/register", (req,res)=>{
    
-    user.register(new user({username: req.body.username}), req.body.password , function(err,user){
+    user.register(new user({username: req.body.username}), req.body.password , (err,user)=>{
             if(err){ var errorMessage= err.message;
                     req.flash("error", errorMessage);
                            res.redirect("back");
                     }
                 else{
-            passport.authenticate("local")(req, res, function(){
+            passport.authenticate("local")(req, res, ()=>{
                 req.flash("success" , "Welcome to YelpCamp "+user.username+"!");
                  res.redirect('/campgrounds');
             });
@@ -35,7 +35,7 @@ router.post("/register", function(req,res){
 });
 
 //Show Login Form
-router.get("/login", function(req,res){
+router.get("/login", (req,res)=>{
     res.render("login" );
 });
 
@@ -48,14 +48,14 @@ router.post("/login", passport.authenticate("local",
      successFlash: 'Welcome!'
      
 
-}), function(req,res){
+}), (req,res)=>{
     username= res.locals.currentUser.username;
     
 });
 
 //LOGOUT LOGIC
 
-router.get("/logout", function(req,res){
+router.get("/logout", (req,res)=>{
 
     req.logout();
     req.flash("success", "You Have Logged Out");
