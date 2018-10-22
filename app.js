@@ -19,7 +19,7 @@ var express     = require("express"),
 
 
 //Connect To DB
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb://andranikatoyan:password2018@ds243502.mlab.com:43502/yelp_camp");
 //apply body parser to be able to view req.body 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname+"/public"));
