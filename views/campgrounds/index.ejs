@@ -7,26 +7,27 @@
 
 
 <div class = "container"> 
-<header class="jumbotron" style="text-align: center; background: none">
+<header class="jumbotron" style="text-align: center; background: none;">
 <div class = "container">
-<h1>Welcome To YelpCamp</h1>
+<h1 style="color:	#696969">Welcome To YelpCamp</h1>
 
 
-<p>View our hand-picked campgrounds from all over the world</p>
+<p><i class="fas fa-campground fa-lg" style="color: black"></i> View our hand-picked campgrounds from all over the world</p>
 
-<p>
+<p style="margin-top:50px">
+    
 <a class="btn btn-success btn-lg " href="/campgrounds/new">Add New Campground</a>    
 </p>
 </div>
 </header>
 
-<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+<div class="row text-center" style="display: flex; flex-wrap: wrap; margin-top: -40px">
 
 <% campgrounds.forEach(function(campground){ %>
     
     <div class="col-md-3 col-sm-6">
-        <div class="thumbnail">
-        <img class="thumbnail" src = "<%= campground.image %>" > 
+        <div class="thumbnail img-fluid img-rounded" >
+        <img class=" img-fluid img-rounded" src = "<%= campground.image %>" > 
        <div class ="caption ">
            <h4> <%= campground.name %> 
             

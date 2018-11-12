@@ -5,6 +5,7 @@
     padding: 0;
 }
 
+
 .thumbnail .caption-full {
     padding: 9px;
 }
@@ -16,5 +17,10 @@
     width: 100%;
 }
 body {
-    background: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EQMOWcXPx/videoblocks-green-abstract-background_byl-ehp0x_thumbnail-full01.png")
+    background: url("https://webgradients.com/public/webgradients_png/032%20Sharpeye%20Eagle.png");
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+.jumbotron {
+    font-weight: bold;
 }
